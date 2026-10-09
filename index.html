@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORTEO JUSTO</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="card">
+  <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+  <header class="head">
+    <div class="icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="6" r="2.5"/><circle cx="5.5" cy="17" r="2.5"/><circle cx="18.5" cy="17" r="2.5"/><path d="M10.6 8.2 6.9 14.8M13.4 8.2l3.7 6.6M8 17h8"/></svg>
+    </div>
+    <div>
+      <span class="tag">APLICACIÓN</span>
+      <h1>SORTEO JUSTO</h1>
+    </div>
+  </header>
+  <p class="intro">Repartir la clase en equipos equilibrados, sin repetir los de la vez pasada.</p>
+  <p class="twist"><b>El giro:</b> Guarda el historial. Tu docente la va a usar de verdad: ese es el premio.</p>
+  <hr>
+
+  <section>
+    <h2>Clases</h2>
+    <div class="row">
+      <select id="classSelect" aria-label="Clase activa"></select>
+      <button id="delClass" class="btn ghost danger">Eliminar clase</button>
+    </div>
+    <div class="row">
+      <input id="newClass" type="text" placeholder="Nombre de la nueva clase (ej. 8°A Ciencias)" maxlength="60">
+      <button id="addClass" class="btn">Crear clase</button>
+    </div>
+  </section>
+  <hr>
+
+  <section>
+    <h2>Estudiantes <span id="studentCount" class="count">0</span></h2>
+    <div class="row">
+      <input id="studentName" type="text" placeholder="Nombre del estudiante" maxlength="60">
+      <button id="addStudent" class="btn">Agregar</button>
+    </div>
+    <details>
+      <summary>Pegar una lista (un nombre por línea)</summary>
+      <textarea id="bulk" rows="5" placeholder="Ana Pérez&#10;Luis Gómez&#10;María Rivas"></textarea>
+      <button id="addBulk" class="btn ghost">Agregar lista</button>
+    </details>
+    <ul id="studentList" class="chips"></ul>
+    <button id="clearStudents" class="btn ghost danger">Limpiar lista</button>
+  </section>
+  <hr>
+
+  <section>
+    <h2>Configuración del sorteo</h2>
+    <div class="row">
+      <select id="mode" aria-label="Modo">
+        <option value="teams">Cantidad de equipos</option>
+        <option value="size">Estudiantes por equipo</option>
+      </select>
+      <input id="value" type="number" min="1" value="4" aria-label="Valor">
+    </div>
+    <p id="preview" class="muted"></p>
+    <button id="draw" class="btn main">REALIZAR SORTEO</button>
+    <div id="warn" class="warn" hidden></div>
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  </section>
+  <hr>
+
+  <section id="resultPanel" hidden>
+    <h2 id="resultTitle">Resultados</h2>
+    <div id="teams" class="teams"></div>
+    <div class="row">
+      <button id="copy" class="btn">Copiar resultados</button>
+      <button id="print" class="btn ghost">Imprimir</button>
+      <button id="again" class="btn ghost">Nuevo sorteo</button>
+    </div>
+    <hr>
+  </section>
+
+  <section id="historySection">
+    <h2>Historial de sorteos <span id="histCount" class="count">0</span></h2>
+    <ul id="history" class="hist"></ul>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
